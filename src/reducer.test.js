@@ -34,11 +34,24 @@ describe('test make guess', ()=>{
 })
 
 describe('test feedback', ()=>{
-    it('should give appropriate feedback based on last guess', ()=>{
-        const action = 'MAKE_GUESS';
-        const newGuess = 55;
-        const newState = reducer(undefined, makeGuess(newGuess));
-        expect(newState.feedback).not.toBe('');
+       it('should correct feedback to the user when guess is made', () => {
+
+        let state = {
+                guesses: [],
+                correctAnswer: 1
+            }
+        
+       state = reducer(state, makeGuess(1))
+       expect(state.feedback).toEqual('You got it!')
+       
+       state = reducer(state, makeGuess(10))
+       expect(state.feedback).toEqual('You\'re Hot!')
+
+       state = reducer(state, makeGuess(20))
+       expect(state.feedback).toEqual('You\'re Warm.')
+
+       state = reducer(state, makeGuess(90))
+       expect(state.feedback).toEqual('You\'re Ice Cold...')
     })
 })
 
