@@ -58,7 +58,6 @@ describe('test feedback', ()=>{
 describe('test Aural Update', ()=>{
     it('should give appropriate feedback based on last guess, to text readers', ()=>{
         const action = 'GENERATE_AURAL_UPDATE';
-        console.log(action);
         const newGuess = 55;
         const newState = reducer({
             guesses: [55, 30],
